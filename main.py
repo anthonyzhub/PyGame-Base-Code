@@ -1,9 +1,8 @@
 #! /usr/bin/python3
 
 import pygame
-
-from Miscellaneous.settings import GameSettings
-from Menus.mainMenu import MainMenu
+from mainMenu import MainMenu
+from settings import GameSettings
 
 # Default screen size
 DEFAULT_WIDTH = 840
@@ -60,12 +59,6 @@ class Game:
             # Update variables
             self.width = currWidth
             self.height = currHeight
-
-            # Update dimensions for all buttons
-            self.settingsClass.updateButtonDimensions(self.scale)
-
-            # Update dimensions for all vehicles
-            self.settingsClass.updateCarDimensions(self.scale)
             
             # Update screen with new dimensions
             self.screen = pygame.display.set_mode((self.width, self.height), pygame.RESIZABLE)

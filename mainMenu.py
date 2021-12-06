@@ -1,7 +1,6 @@
 import pygame
 
-from Miscellaneous.button import Button
-from Menus.gameModeMenu import GameModeMenu
+from button import Button
 
 class MainMenu:
 
@@ -23,8 +22,7 @@ class MainMenu:
             return
 
         # Manually update button's X & Y value
-        self.gameModeButton.updateProperties(self.gameClass.width / 2, self.gameClass.height / 2)
-        self.settingsButton.updateProperties(self.gameClass.width / 2, self.gameModeButton.yPosition + self.settingsClass.distanceBetweenButtons)
+        self.settingsButton.updateProperties(self.gameClass.width / 2, self.playButton.yPosition + self.settingsClass.distanceBetweenButtons)
 
         # Get new screen's area
         self.oldScreenArea = self.gameClass.width * self.gameClass.height
@@ -51,15 +49,12 @@ class MainMenu:
 
         # OBJECTIVE: Display and handle main menu
 
-        # Initialize other classes
-        self.gameModeMenuClass = GameModeMenu(self.gameClass, self.settingsClass)
-
         # Create buttons
-        self.gameModeButton = Button(self.gameClass, self.settingsClass, "Game Modes", self.gameModeMenuClass.mainLoop, self.gameClass.width / 2, self.gameClass.height / 2)
-        self.settingsButton = Button(self.gameClass, self.settingsClass, "Settings", None, self.gameClass.width / 2, self.gameModeButton.yPosition + self.settingsClass.distanceBetweenButtons)
+        self.playButton = Button(self.gameClass, self.settingsClass, "Play", None, self.gameClass.width / 2, self.gameClass.height / 2)
+        self.settingsButton = Button(self.gameClass, self.settingsClass, "Settings", None, self.gameClass.width / 2, self.playButton.yPosition + self.settingsClass.distanceBetweenButtons)
 
         # Create a list to hold all buttons
-        self.buttonsList = [self.gameModeButton, self.settingsButton]
+        self.buttonsList = [self.playButton, self.settingsButton]
 
         while self.gameClass.showMainMenu:
 
